@@ -8,12 +8,75 @@
     <script src="app.js"></script>
   </head>
   <body>
+    
+    <h3>Questão 1</h3>
     <div ng-controller="TemperaturaController as tempCtrl">
 
-      <h2>Conversor de temperatura</h2>
+      <!-- <h2>Conversor de temperatura</h2> -->
       Celsius: <input type="text" ng-model="tempCtrl.celsius"> <br>
       Kelvin: {{tempCtrl.celsiusToKelvin(tempCtrl.celsius)}} <br>
       Fahrenheit: {{tempCtrl.celsiusToFahrenheit(tempCtrl.celsius)}} <br>
+    </div>
+    <br>
+    <h3>Questão 2</h3>
+    <div ng-controller="impostoController as imposto">
+      Salário<input type="text" ng-model="salario"><br>
+      Imposto: {{calculaImposto()}}<br>
+    </div>
+
+    <h3>Questão 3</h3>
+    <div ng-controller="reviewController as review">
+     <div>
+            <b>Número de estrelas</b><input type="number" min="0" max="5" ng-model="numeroEstrelas"><br/>
+            <b>Comentário: </b><input type="text" maxlength="45" ng-model="comentarioAtual">
+        </div>
+        <div>
+            <b>Número de estrelas atual:</b><span ng-bind="numeroEstrelas"></span><br/>
+            <b>Comentário atual: </b><span ng-bind="comentarioAtual"></span>
+        </div>
+        <div>
+            <p ng-repeat="c in comentarios track by $index">
+                <span ng-bind="c"></span>
+            </p>
+        </div>
+        <button class="btn" ng-click="envia()">Envia</button>
+
+    </div>
+
+    <h3>Questão 4</h3>
+    <div ng-controller="contactController">
+          <div>
+
+              <b>Nome: </b><input type="text" ng-model="contato.nome"><br/>
+              <b>Email: </b><input type="text" ng-model="contato.email"><br/>
+              <b>Telefone: </b><input type="text" ng-model="contato.telefone"><br/>
+
+          </div>
+
+          <div>
+              <table style="width: 100%">
+
+                      <tr>
+                          <th>NOME</th>
+                          <th>EMAIL</th>
+                          <th>TELEFONE</th>
+                          <th>ID(Deleta)</th>
+                          <th>ID(Altera)</th>
+                      </tr>
+                      <tr ng-repeat="c in contatos track by $index" ng-if="c != null">
+                              <td>{{c.nome}}</span></td>
+                              <td>{{c.email}}</td>
+                              <td>{{c.telefone}}</span></td>
+
+                              <td><button class="btn" ng-click="deleta(c)">{{c.idn}}</button></td>
+                              <td><button class="btn" ng-click="carregaFormulario(c)">{{c.idn}}</button></td>
+                      </tr>
+
+              </table>
+          </div>
+        
+        <button ng-click="envia()">Envia</button>
+        <button ng-click="altera()">Altera</button>
     </div>
   </body>
 </html>
