@@ -13,4 +13,15 @@ app.controller('TemperaturaController', function() {
     }
   };
 
+
+  this.celsiusToFahrenheit = function(celsius){
+  	answer = celsius*1.8+32;
+  	if(isNaN(answer)){
+  		return 0;
+  	}
+  	else{
+  		return answer;
+  	}
+  }
+
 });
