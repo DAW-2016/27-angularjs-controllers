@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercício AngularJS: Controllers</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.0/angular.min.js"></script>
+  <script src="app.js"></script>
+  <style type="text/css" href="style.css"></style>
+</head>
+<body>
+  <div ng-controller="reviewController as revCtrl" class="main">
+    <h2>Review</h2>
+    <div class="formulario">
+      <fieldset>
+        <p>Nota: <input type="range" ng-model="revCtrl.nota" min="0" max="5"></p>
+        <p>Comentário: <input type="text" ng-model="revCtrl.comment"/></p>
+        <button ng-click="revCtrl.adicionaReview()">ADD</button>
+      </fieldset>
+    </div>
+    <br>
+    <div class="apres">
+      <h2>Preview</h2>
+      <fieldset>
+        <h2>Nota: {{revCtrl.nota}}</h2>
+        <p>{{revCtrl.comment}}</p>
+      </fieldset>
+    </div>
+    <br>
+    <div class="apres">
+    <h2>Reviews Já Inseridas</h2>
+      <fieldset ng-repeat="obj in revCtrl.reviews">
+        <h2>Nota: {{obj.nota}}</h2>
+        <p>{{obj.comment}}</p>
+      </fieldset>
+    </div>
+  </div>
+</body>
+</html>
